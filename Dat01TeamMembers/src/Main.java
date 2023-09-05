@@ -16,7 +16,6 @@ public class Main {
 
                 for (String name : teamArr) {
                     if (!teams.containsKey(name)) {
-                        new ArrayList<String>();
                         teams.put(name, new ArrayList<String>());
                     }
                     ArrayList<String> teamNames = teams.get(name);
@@ -31,14 +30,6 @@ public class Main {
             System.out.println("IOException in try block =>" + e.getMessage());
         }
 
-
-
-
-//        HashMap<String, Integer> empIds = new HashMap<>();
-//        empIds.put("John", 12345);
-//        empIds.put("Carl", 23987);
-//        empIds.put("Alex", 2342810);
-//        System.out.println(empIds.get("Alex"));
     }
 
     public static String listToString(ArrayList<String> arrList) {
