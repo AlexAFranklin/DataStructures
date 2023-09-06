@@ -62,12 +62,6 @@ public class Main {
         parking.forEach((n) -> System.out.println(n.toString()));
 
 
-
-
-
-
     }
 }
 
-//    ArrayList<String> teamNames = teams.get(name);
-//                    teamNames.add(lineArr[0]);
