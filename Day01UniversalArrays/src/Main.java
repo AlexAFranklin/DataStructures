@@ -12,7 +12,7 @@ public class Main {
 //        printArray(d1Data);
 //        printArray(d1Data2);
 
-//        findDuplicates1DV2(d1Data, d1Data2);
+//        printArray(findDuplicates1D(d1Data, d1Data2));
 
 
         int d2Data1[] = new int[2];
@@ -25,14 +25,15 @@ public class Main {
         int d2Data7[] = new int[3];
         int d2Data8[] = new int[2];
         int d2Data9[] = new int[4];
-
+//
         int[][] d2Data = {d2Data1, d2Data2, d2Data3, d2Data4};
         int[][] d2DataSecond = {d2Data5, d2Data6, d2Data7, d2Data8, d2Data9};
         inputArray2D(d2Data);
-        printArray2D(d2Data);
+
         inputArray2D(d2DataSecond);
+                printArray2D(d2Data);
         printArray2D(d2DataSecond);
-        findDuplicates2D(d2Data, d2DataSecond);
+        printArray(findDuplicates2D(d2Data, d2DataSecond));
 
 
 
@@ -75,90 +76,89 @@ public class Main {
         }
     }
 
-    static int[] findDuplicates1D(int[] a1, int[] a2) {
-        String duplicates = "";
 
+
+
+
+    static int[] findDuplicates1D(int[] a1, int[] a2) {
+        int duplicates[] = (a1.length <= a2.length) ? new int[a1.length] : new int[a2.length] ;
+        int duplicateCount = 0;
         for (int i = 0; i < a1.length; i++) {
             for (int j = 0; j < a2.length; j++) {
-                String jString = Integer.toString(a2[j]);
-                if (a1[i] == a2[j] && !duplicates.contains(jString)) {
-                    duplicates += jString + "-";
+                if (a1[i] == a2[j]) {
+                    duplicates[duplicateCount++] = a1[i];
                 }
             }
         }
+        int duplicatesCopy[] = new int[duplicateCount];
+        int duplicateStorage[] = new int[duplicateCount];
+        duplicateCount = 0;
 
-        String [] duplicateArr = duplicates.split("-", -2);
-//        System.out.println(duplicates + " the duplicates");
-//        System.out.println(duplicateArr.length + " the length");
-        int finalInt[] = new int[duplicateArr.length - 1];
-
-        for (int i = 0; i < finalInt.length; i++) {
-            finalInt[i] = Integer.parseInt(duplicateArr[i]);
-        }
-       // System.out.println(Arrays.toString(finalInt) + " final array");
-        // used Arrays to test in console only
-        return finalInt;
-
-
-    }
-
-    static int[] findDuplicates1DV2(int[] a1, int[] a2) {
-        String a1String = "";
-        String duplicates = "";
-
-        for (int i = 0; i < a1.length; i++) {
-          a1String += Integer.toString(a1[i]);
-          // TODO - add duplicates - this would go here. - also change the second loop to include the top portion?
-            // add a1String content after checking against it. to check for every array - incomplete 
-        }
-        for (int j = 0; j < a2.length; j++) {
-            String jString = Integer.toString(a2[j]);
-           if (!duplicates.contains(jString) && a1String.contains(jString)) {
-               duplicates += jString + "-";
-           }
+        for (int i = 0; i <duplicatesCopy.length; i++) {
+            duplicatesCopy[i] = duplicates[i];
         }
 
-        String [] duplicateArr = duplicates.split("-", -2);
-        int finalInt[] = new int[duplicateArr.length - 1];
 
-        for (int i = 0; i < finalInt.length; i++) {
-            finalInt[i] = Integer.parseInt(duplicateArr[i]);
-        }
-        System.out.println(Arrays.toString(finalInt) + " final array");
-        return finalInt;
+        for (int i = 0; i < duplicatesCopy.length; i++) {
+            int matchCount = 0;
+            for (int j = 0; j < duplicateStorage.length; j++) {
+                if (duplicatesCopy[i] == duplicateStorage[j]){
+                    matchCount++;
+                }
+            }
 
-
-    }
-
-    static int[] findDuplicates2D(int[][] a1, int[][] a2) {
-        String a1String = "";
-        String duplicates = "";
-
-        for (int i = 0; i < a1.length; i++) {
-            for (int j = 0; j <a1[i].length; j++) {
-                a1String += Integer.toString(a1[i][j]) + "-";
-                System.out.println(a1String);
+            if (matchCount == 0) {
+                duplicateStorage[duplicateCount++] = duplicatesCopy[i];
+                System.out.println(duplicatesCopy[i]);
             }
         }
+
+        int finalDuplicates[] = new int[duplicateCount];
+        System.out.println(duplicateCount);
+
+
+        for (int i = 0; i < finalDuplicates.length; i++) {
+            finalDuplicates[i] = duplicateStorage[i];
+        }
+
+
+
+        return finalDuplicates;
+    }
+
+    static int[] findDuplicates2D(int[][] a1, int[][] a2){
+        int a1Length = 0;
+        int a2Length = 0;
+
+
+        for (int i = 0; i < a1.length; i++) {
+            a1Length += a1[i].length;
+        }
+
         for (int i = 0; i < a2.length; i++) {
-            for (int j = 0; j <a2[i].length; j++) {
-                String jString = Integer.toString(a2[i][j]);
-                if (!duplicates.contains(jString) && a1String.contains(jString)) {
-                    duplicates += jString + "-";
-                }
+            a2Length += a2[i].length;
+        }
+
+        int a1Arr[] =  new int[a1Length];
+        int a2Arr[] =  new int[a2Length];
+        a1Length = 0;
+        a2Length = 0;
+
+        for (int i = 0; i < a1.length; i++) {
+            for (int j = 0; j < a1[i].length; j++) {
+                a1Arr[a1Length++] = a1[i][j];
             }
         }
 
-        String [] duplicateArr = duplicates.split("-", -2);
-        int finalInt[] = new int[duplicateArr.length - 1];
-
-        for (int i = 0; i < finalInt.length; i++) {
-            finalInt[i] = Integer.parseInt(duplicateArr[i]);
+        for (int i = 0; i < a2.length; i++) {
+            for (int j = 0; j < a2[i].length; j++) {
+                a2Arr[a2Length++] = a2[i][j];
+            }
         }
-        System.out.println(Arrays.toString(finalInt) + " final array");
-        return finalInt;
 
 
+        return findDuplicates1D(a1Arr, a2Arr);
     }
+
 }
 

@@ -6,13 +6,13 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-
+// TODO: add validation
         String line;
         try(BufferedReader br = new BufferedReader(new FileReader("teams.txt"))) {
             HashMap<String, ArrayList<String>> teams = new HashMap<>();
             while ((line = br.readLine()) != null) {
-                String [] lineArr = line.split(":", -2);
-                String [] teamArr = lineArr[1].split(",", -2);
+                String [] lineArr = line.split(":");
+                String [] teamArr = lineArr[1].split(",");
 
                 for (String name : teamArr) {
                     if (!teams.containsKey(name)) {
