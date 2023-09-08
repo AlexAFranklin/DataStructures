@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a8343d-6368-4ec3-916d-449370fb3f79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Fibonacci.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day02ArrayListOwnImpl/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day02ArrayListOwnImpl/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day02ArrayListOwnImpl/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day02ArrayListOwnImpl/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day02ArrayListOwnImpl/Day02ArrayListOwnImpl.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Day02ArrayListOwnImpl/src/CustomArrayOfInts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fibonacci.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fibonacci.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day01UniversalArrays/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Day01UniversalArrays/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

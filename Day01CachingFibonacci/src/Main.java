@@ -6,19 +6,18 @@ public class Main {
         System.out.println("Hello world!");
 
 
-        Fibonacci f1Recursion = new Fibonacci(false);
+        Fibonacci fib1 = new Fibonacci(false);
+        Fibonacci fib2 = new Fibonacci(true);
 
-Long sixth =   f1Recursion.getNthFib(5);
+Long recursion =   fib1.getNthFib(16);
+Long caching = fib2.getNthFib(16);
+System.out.println(fib1.getCountOfFibsComputed() + " Fib 1 fibs computed");
+        System.out.println(fib2.getCountOfFibsComputed() + " Fib 2 fibs computed");
 
 
 
-System.out.println(sixth);
-//        public long getNthFib(int n) {
-//            if (n <= 1) {
-//                return  n;
-//            }
-//            return (getNthFib(n-1)) + (getNthFib(n-2));
-//        }
+System.out.println(recursion + " + " + caching);
+
     }
 
 

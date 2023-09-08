@@ -6,6 +6,7 @@ class Fibonacci {
     private HashMap<Integer,Long> fibsCached = new HashMap<>();
 
     private int fibsCompCount = 2; // may not be needed
+    private int fibsComputed = 0;
     // in a correct caching implementation fibsCompCount will end up the same as fibsCached.size();
 
     Fibonacci(boolean cacheOn) {
@@ -15,34 +16,24 @@ class Fibonacci {
     }
 
 
-
-
     // when you implement caching, make this method print out the number of fib values it had to compute (as opposed to take from cache)
     public long getNthFib(int n) {
-        if (fibsCached.containsKey(n)){
-            System.out.println("CACHED!! " + n);
+        if (fibsCached.containsKey(n) && isCacheOn){
             return fibsCached.get(n);
-        }
-        else {
-            System.out.println("DIDN't CACHE: " + n);
+        } else if(!fibsCached.containsKey(n)) {
+            System.out.println("Fibs computed: " + ++fibsComputed);
         }
         if (n <= 1) {
-            return  n;
+            return  fibsCached.get(n);
         }
 
-        fibsCached.put(n-1, getNthFib(n-1));
-        System.out.println(fibsCached.get(n -1) + " cached1? " + (n-1));
-        fibsCached.put(n-2, getNthFib(n-2));
-        System.out.println(fibsCached.get(n -2) + " cached2? " + (n-2));
-        return fibsCached.get(n-1) + fibsCached.get(n-2);
+        return (isCacheOn) ? computeNthFib(n-1) + computeNthFib(n-2) : getNthFib(n - 1) + getNthFib(n - 2);
     }
 
-    // You can find implementation online, recursive or non-recursive.
-    // For 100% solution you should use values in fibsCached as a starting point
-    // instead of always starting from the first two values of 0, 1.
     private long computeNthFib(int n) {
-
-        return 0L;
+        fibsCached.put(n, getNthFib(n));
+        fibsCompCount++;
+        return fibsCached.get(n);
     }
 
     // You are allowed to add another private method for fibonacci generation
@@ -51,13 +42,13 @@ class Fibonacci {
     // How many fibonacci numbers has your code computed as opposed to returned cached?
     // Use this in your testing to make sure your caching actually works properly.
     public int getCountOfFibsComputed() {
-
         return fibsCompCount;
     }
 
     @Override
     public String toString() {
-return "";
+
+return fibsCached;
 
     } // returns all cached Fib values, comma-space-separated on a single line
 
