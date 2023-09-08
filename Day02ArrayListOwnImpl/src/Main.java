@@ -5,40 +5,84 @@ public class Main {
 
         CustomArrayOfInts array = new CustomArrayOfInts();
 
-        array.printArray();
-        array.add(6);
-        array.add(654);
-        array.add(8);
-        array.add(643);
-        array.add(23);
-        array.add(8);
-        array.add(3);
-        array.printArray();
-        array.deleteByValue(3);
-        array.printArray();
-        array.insertValueAtIndex(100, 4);
-        array.printArray();
-
-
-        try {
-           int get =  array.get(10);
-           System.out.println(get);
-        } catch (IndexOutOfBoundsException ioob) {
-            System.out.println(ioob.getLocalizedMessage());
+        for (int i = 0; i < 20; i++) {
+            array.add((int) Math.floor(Math.random() * (100 + 100 + 1) -100));
         }
 
-        try {
-            int [] mySlice = array.getSlice(3, 5);
-            for (int i = 0; i < mySlice.length; i++) {
-                System.out.print(mySlice[i] + ",");
-            }
-        } catch (ArrayIndexOutOfBoundsException aioob) {
-            System.out.println(aioob.getLocalizedMessage());
-        }
+        System.out.println("Original Array");
+        array.printArray();
+        //DELETE BY INDEX
+//        for (int i = 0; i < 20; i++) {
+//            int x = (int) Math.floor(Math.random() * (25 + 5) + 1)  -5;
+//            System.out.println(" X = " + x);
+//            array.deleteByIndex(x);
+//            array.printArray();
+//
+//        }
+
+      //  DELETE BY VALUE
+//        for (int i = 0; i < 20; i++) {
+//            int x = (int) Math.floor(Math.random() * (12 + 12 ) + 1)  -10;
+//            System.out.println(" X = " + x);
+//            array.deleteByValue(x);
+//            array.printArray();
+//
+//        }
+
+       // INSERT AT INDEX
+//        for (int i = 0; i < 20; i++) {
+//            int x = (int) Math.floor(Math.random() * (25 + 5) + 1)  -5;
+//            int y = 1000;
+//            System.out.println(" X = " + x);
+//            array.insertValueAtIndex(y, x);
+//            array.printArray();
+//
+//        }
+
+
+        // GET
+//            for (int i = 0; i < 20; i++) {
+//                int x = (int) Math.floor(Math.random() * (25 + 5) + 1) - 5;
+//                System.out.println(" X = " + x);
+//
+//                try {
+//                    int y = array.get(x);
+//                    System.out.println("GOT = " + y);
+//                } catch (IndexOutOfBoundsException ioob) {
+//                    System.out.println(ioob.getLocalizedMessage());
+//                }
+//
+//                array.printArray();
+//            }
+
+        // GET SLICE
+
+//            for (int i = 0; i < 20; i++) {
+//                int x = (int) (int) (Math.random() * 23) - 10;
+//                int y = (int) (Math.random() * 16) - 5;
+//                System.out.println(" index = " + x + ", length = " + y);
+//
+//                try {
+//                    int [] mySlice = array.getSlice(x, y);
+//                    for (int j = 0; j < mySlice.length; j++) {
+//                        System.out.print(mySlice[j] + ",");
+//                    }
+//                    System.out.print("\n");
+//                } catch (IndexOutOfBoundsException iob) {
+//                    System.out.println(iob.getLocalizedMessage());
+//                } catch (NegativeArraySizeException nas) {
+//                    System.out.println(nas.getLocalizedMessage());
+//                }
+//
+//            }
+
+
 
 
 
     }
+
+
 
 
 }

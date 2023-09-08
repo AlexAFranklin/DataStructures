@@ -6,8 +6,15 @@ public class CustomArrayOfInts {
         return size;
     }
     public void add(int value) {
+//        try {
+//            int i = Integer.parseInt(String.valueOf(value));
+//        } catch (NumberFormatException e) {
+//            System.out.println("You must provide an integer");
+//            return;
+//        }
+
         if (size == data.length) {
-             int [] tempData = new int[data.length * 2];
+            int [] tempData = new int[data.length * 2];
             for (int i = 0; i < size; i++) {
                 tempData[i] = data[i];
             }
@@ -15,6 +22,7 @@ public class CustomArrayOfInts {
         }
         data[size] = value;
         size++;
+
     }
     public void deleteByIndex(int index) {
 
@@ -59,8 +67,7 @@ public class CustomArrayOfInts {
             add(value);
             return;
         }
-
-        if (size == data.length) {
+        if (size  +1 == data.length) {
             int [] tempData = new int[data.length * 2];
             for (int i = 0; i < size; i++) {
                 tempData[i] = data[i];
@@ -90,7 +97,10 @@ public class CustomArrayOfInts {
             throw new ArrayIndexOutOfBoundsException("Selection exceeds the length of the array.");
         }
         if (startIdx < 0) {
-            throw new IndexOutOfBoundsException("That index does not exist in this array");
+            throw new NegativeArraySizeException("That index does not exist in this array");
+        }
+        if (length < 0 ) {
+            throw new NegativeArraySizeException("That index does not exist in this array");
         }
         int[] slice = new int[length];
         for (int i = 0; i < length; i++) {

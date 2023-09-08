@@ -21,14 +21,25 @@ public class Main {
 
     }
 
-    static int getIfExists(int[][] data, int row, int col){
-        if (data.length >= row + 1 && row >= 0) {
-            if(data[row].length >= col + 1 && col >=0){
-                return data[row][col];
-            }
+//    static int getIfExists(int[][] data, int row, int col){
+//        if (data.length >= row + 1 && row >= 0) {
+//            if(data[row].length >= col + 1 && col >=0){
+//                return data[row][col];
+//            }
+//        }
+//        return 0;
+//    }
+        static int getIfExists(int[][] data, int row, int col){
+        try {
+            return data[row][col];
+        } catch (IndexOutOfBoundsException iob) {
+            return 0;
         }
-        return 0;
     }
+
+    // - also try/catch - avoid ifs.
+    // performance vs. clean code - does not really matter (performance)
+    // we only fix performance when it becomes an issue. - not before.
 
     static int sumOfCross(int[][] data, int row, int col){
         int sum = 0;
@@ -54,12 +65,6 @@ public class Main {
         for (int i = 0; i < duplicate2d.length; i++) {
             duplicate2d[i] = new int[orig2d[i].length];
         }
-        for (int i = 0; i < duplicate2d.length; i++) {
-            for (int j = 0; j < duplicate2d[i].length; j++) {
-                duplicate2d[i][j] = orig2d[i][j];
-            }
-        }
-        print2D(duplicate2d);
         return duplicate2d;
     }
 
@@ -78,6 +83,9 @@ public class Main {
         }
         return smallestLocation;
     }
+    // return 3 length array (val, row, col) = or could make a return class for different data types.
+
+    // Integer.MAX_VALUE = max value that Java can express. Alternative to minimum. (reverse exists too)
 
     static int[][] data2DSums(int[][] data) {
         int duplicate2d[][] = new int[data.length][];
