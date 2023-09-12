@@ -126,15 +126,17 @@ public class LinkedListArrayOfStrings {
         }
 
         boolean found = false;
-        while (container.next.value != null && !found) {
+        while (container.next != null && !found) {
             if (container.next.value.equals(value)) {
                 found = true;
                 size--;
-                if (container.next.next != null){
-                    container.next = container.next.next;
-                } else {
-                    container.next = null;
+
+                if (container.next == end){
                     end = container;
+                    container.next = null;
+
+                } else {
+                    container.next = container.next.next;
                 }
                 return found;
             }
@@ -150,10 +152,11 @@ public class LinkedListArrayOfStrings {
     @Override
     public String toString() {
     StringBuilder newString = new StringBuilder();
+    newString.append("[");
     Container next = start;
 
     for (int i = 0; i < size; i++) {
-        newString.append(next.value).append(", ");
+        newString.append(next.value).append((next == end) ? "]" : ", ");
         next = next.next;
 
     }
@@ -163,6 +166,14 @@ public class LinkedListArrayOfStrings {
     } // comma-separated values list similar to: [5,8,11]
 
     public String[] toArray() {
-        throw new RuntimeException();
+        String [] strArray = new String[size];
+        Container next = start;
+
+        for (int i = 0; i < size; i++){
+            strArray[i] = next.value;
+            next = next.next;
+        }
+
+        return strArray;
     } // could be used for Unit testing
 }

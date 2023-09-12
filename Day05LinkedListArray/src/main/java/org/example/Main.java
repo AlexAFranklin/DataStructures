@@ -8,7 +8,11 @@ public class Main {
         for (int i = 0; i < 10; i++){
             array.add(String.valueOf(i));
             size++;
-            System.out.println(size + " SIZE");
+        }
+        System.out.println(array.toString());
+        String [] newArray = array.toArray();
+        for (int i = 0; i < newArray.length; i++){
+            System.out.println(newArray[i]);
         }
 
 //        LinkedListArrayOfStrings array = new LinkedListArrayOfStrings();

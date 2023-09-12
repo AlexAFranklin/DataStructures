@@ -303,9 +303,55 @@ class LinkedListArrayOfStringsTest {
 
     @Test
     void testToString() {
+        LinkedListArrayOfStrings array = new LinkedListArrayOfStrings();
+        array.add("Hello World");
+        assertEquals("[Hello World]", array.toString());
+    }
+
+    @Test
+    void testToStringNumbers() {
+        LinkedListArrayOfStrings array = new LinkedListArrayOfStrings();
+        int index = -1;
+        for (int i = 0; i < 10; i++){
+            index++;
+            array.add(String.valueOf(index));
+        }
+        assertEquals("[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]", array.toString());
     }
 
     @Test
     void toArray() {
+        LinkedListArrayOfStrings array = new LinkedListArrayOfStrings();
+        int index = -1;
+        for (int i = 0; i < 10; i++){
+            index++;
+            array.add(String.valueOf(index));
+        }
+        String [] strArray = array.toArray();
+        assertEquals(strArray[5], array.get(5));
     }
+
+    @Test
+    void toArrayEnd() {
+        LinkedListArrayOfStrings array = new LinkedListArrayOfStrings();
+        int index = -1;
+        for (int i = 0; i < 10; i++){
+            index++;
+            array.add(String.valueOf(index));
+        }
+        String [] strArray = array.toArray();
+        assertEquals(strArray[index], array.get(index));
+    }
+    @Test
+    void toArrayStart() {
+        LinkedListArrayOfStrings array = new LinkedListArrayOfStrings();
+        int index = -1;
+        for (int i = 0; i < 10; i++){
+            index++;
+            array.add(String.valueOf(index));
+        }
+        String [] strArray = array.toArray();
+        assertEquals(strArray[0], array.get(0));
+    }
+
 }
