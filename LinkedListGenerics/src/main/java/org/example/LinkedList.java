@@ -168,6 +168,14 @@ public class LinkedList<T> {
 
     }
 
+    public void clear(){
+        Container cleared = new Container();
+        start = cleared;
+        end = cleared;
+        size = 0;
+
+    }
+
     class LinkedListArray<T> {
         private T[] genArray;
         public final int length;
