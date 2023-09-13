@@ -1,22 +1,26 @@
 package org.example;
 
-public class LinkedListArrayOfStrings {
-    private static class Container {
+import java.lang.reflect.Array;
+import java.util.Objects;
+
+public class LinkedList<T> {
+
+
+
+    private class Container {
         Container next;
-        String value;
+        T value;
     }
 
     private Container start;
     private Container end;
 
-    public LinkedListArrayOfStrings(){
+    public LinkedList(){
         size = 0;
     }
-
-
     private int size;
 
-    public void add(String value) {
+    public void add(T value) {
         Container newContainer = new Container();
         newContainer.next = null;
         newContainer.value = value;
@@ -30,22 +34,27 @@ public class LinkedListArrayOfStrings {
         size ++;
 
     }
-    public String get(int index) {
+    public int getSize() {
+        return size;
+    }
+
+    public <T> Object get(int index) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Not a valid index");
         }
         Container next = start;
-        String result ="";
+        T result = (T) next.value;
 
         for (int i = 0; i <= index; i++) {
             if (i == index) {
-                result = next.value;
+                result = (T) next.value;
             }
             next = next.next;
         }
         return result;
     }
-    public void insertValueAtIndex(String value, int index) {
+
+    public void insertValueAtIndex(T value, int index) {
         if (index > size || index < 0) {
             throw new IndexOutOfBoundsException("Not a valid index");
         }
@@ -68,11 +77,12 @@ public class LinkedListArrayOfStrings {
                 newContainer.next = next.next;
                 next.next = newContainer;
             }
-           next = next.next;
+            next = next.next;
         }
 
     }
-    public void replaceValueAtIndex(String value, int index) {
+
+    public void replaceValueAtIndex(T value, int index) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -85,7 +95,6 @@ public class LinkedListArrayOfStrings {
         }
 
     } // put
-
 
     public void deleteByIndex(int index) {
         if (index >= size || index < 0) {
@@ -112,7 +121,8 @@ public class LinkedListArrayOfStrings {
         }
         size--;
     }
-    public boolean deleteByValue(String value) {
+
+    public boolean deleteByValue(T value) {
         Container container = start;
 
         if (container.value.equals(value)){
@@ -141,35 +151,53 @@ public class LinkedListArrayOfStrings {
 
         return found;
     } // delete first value found
-    public int getSize() {
-        return size;
-    }
 
     @Override
     public String toString() {
-    StringBuilder newString = new StringBuilder();
-    newString.append("[");
-    Container next = start;
+        StringBuilder newString = new StringBuilder();
+        newString.append("[");
+        Container next = start;
 
-    for (int i = 0; i < size; i++) {
-        newString.append(next.value).append((next == end) ? "]" : ", ");
-        next = next.next;
+        for (int i = 0; i < size; i++) {
+            newString.append(next.value).append((next == end) ? "]" : ", ");
+            next = next.next;
+
+        }
+
+        return newString.toString();
 
     }
 
-    return newString.toString();
+    class LinkedListArray<T> {
+        private T[] genArray;
+        public final int length;
 
-    } // comma-separated values list similar to: [5,8,11]
+        LinkedListArray(Class<T> tClass, int size) {
+            genArray = (T[]) Array.newInstance(tClass, size);
+            length = size;
+        }
 
-    public String[] toArray() {
-        String [] strArray = new String[size];
+        public T get(int index){
+            return genArray[index];
+        }
+
+        public void set(int index, T element){
+            genArray[index] = element;
+        }
+
+    }
+
+    public T[] toArray(T[] template) {
+
         Container next = start;
-
-        for (int i = 0; i < size; i++){
-            strArray[i] = next.value;
+            for (int i = 0; i < size; i++){
+            template[i] = next.value;
             next = next.next;
         }
 
-        return strArray;
+            return template;
     } // could be used for Unit testing
+
+
+
 }

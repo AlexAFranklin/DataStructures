@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e25e91fe-d01b-40cf-8aaa-d36a0aab1fea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/src/main/java/org/example/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Day01CachingFibonacci/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day01CachingFibonacci/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LinkedListArrayOfStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LinkedListArrayOfStrings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/LinkedListArrayOfStringsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/LinkedListArrayOfStringsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +58,9 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LinkedListArrayOfStringsTest.toArrayStart">
-    <configuration name="LinkedListArrayOfStringsTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Day05LinkedListArray" />
       <extension name="coverage">
         <pattern>
@@ -62,15 +68,11 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.LinkedListArrayOfStringsTest" />
-      <option name="METHOD_NAME" value="testToString" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListArrayOfStringsTest.testToStringNumbers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListArrayOfStringsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Day05LinkedListArray" />
       <extension name="coverage">
         <pattern>
@@ -80,8 +82,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
       <option name="MAIN_CLASS_NAME" value="org.example.LinkedListArrayOfStringsTest" />
-      <option name="METHOD_NAME" value="testToStringNumbers" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -136,11 +137,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.LinkedListArrayOfStringsTest" />
         <item itemvalue="JUnit.LinkedListArrayOfStringsTest.toArrayStart" />
         <item itemvalue="JUnit.LinkedListArrayOfStringsTest.toArrayEnd" />
         <item itemvalue="JUnit.LinkedListArrayOfStringsTest.toArray" />
-        <item itemvalue="JUnit.LinkedListArrayOfStringsTest.testToStringNumbers" />
-        <item itemvalue="JUnit.LinkedListArrayOfStringsTest.testToString" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +161,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/LinkedListArrayOfStrings.java</url>
-          <line>157</line>
+          <line>153</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

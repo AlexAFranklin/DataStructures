@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09a8343d-6368-4ec3-916d-449370fb3f79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/src/main/java/org/example/LinkedList.java" afterDir="false" />
+    <list default="true" id="d38b7a6e-8f23-420e-9a08-deff9d3f6998" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/LinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day01CachingFibonacci/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day01CachingFibonacci/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Day05LinkedListArray/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day05LinkedListArray/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Day05LinkedListArray/src/main/java/org/example/LinkedListArrayOfStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Day05LinkedListArray/src/main/java/org/example/LinkedListArrayOfStrings.java" afterDir="false" />
     </list>
@@ -31,31 +31,30 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2V2ywO7ZfoqeZzSrxwonViYMM12" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2VIUqwIKp9DmwO30RaXoPEuvpCV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="09a8343d-6368-4ec3-916d-449370fb3f79" name="Changes" comment="" />
-      <created>1694048709503</created>
+      <changelist id="d38b7a6e-8f23-420e-9a08-deff9d3f6998" name="Changes" comment="" />
+      <created>1694523285112</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1694048709503</updated>
+      <updated>1694523285112</updated>
     </task>
     <servers />
   </component>

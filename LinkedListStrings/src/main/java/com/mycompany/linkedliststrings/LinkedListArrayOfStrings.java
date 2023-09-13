@@ -1,6 +1,15 @@
-package org.example;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.linkedliststrings;
 
+/**
+ *
+ * @author alexandrafranklin
+ */
 public class LinkedListArrayOfStrings {
+   
     private static class Container {
         Container next;
         String value;
@@ -34,16 +43,16 @@ public class LinkedListArrayOfStrings {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Not a valid index");
         }
-        Container next = start;
-        String result ="";
+        Container current = start;
+       
 
         for (int i = 0; i <= index; i++) {
             if (i == index) {
-                result = next.value;
+                return current.value;
             }
-            next = next.next;
+            current = current.next;
         }
-        return result;
+       return null;
     }
     public void insertValueAtIndex(String value, int index) {
         if (index > size || index < 0) {
@@ -172,4 +181,5 @@ public class LinkedListArrayOfStrings {
 
         return strArray;
     } // could be used for Unit testing
+    
 }
