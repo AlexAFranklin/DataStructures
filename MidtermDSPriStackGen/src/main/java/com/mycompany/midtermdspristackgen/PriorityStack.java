@@ -14,44 +14,50 @@ import java.util.Iterator;
  */
 public class PriorityStack<T> implements Iterable{
 
+
+    
     @Override
     public Iterator<T> iterator() {
 
 // TODO - maybe figure out how to do this with array - seems hopeless. 
     return new Iterator<T>() {
     
-        Container current = top;
+     
+        T[] theArray = (T[]) new Object[size];
+        T[] iterationArray = toArrayReversed(theArray);
+        int index = 0;
+
 
         @Override
         public boolean hasNext() {
-            return (current != null);
+            return (index < iterationArray.length);
         }
 
         @Override
         public T next() {
-            T result = current.value;
-            current = current.nextBelow;
-            return result;
+            return iterationArray[index++];
         }
     
         };
         
     }
+
     
-
-
-
         private class Container {
-// add a constructor and/or toString if you like
+
         T value;
         boolean hasPriority;
         Container nextBelow;
 // you are NOT allowed to add "previousAbove" reference
     }
         
+        
+        
+
+        
        private Container top;
        private int size;
-       private T[] reversed;
+       private T[] arrayTemplate;
 //       private int reversedCount;
        
        

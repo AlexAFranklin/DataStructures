@@ -17,25 +17,25 @@ public class MidtermDSPriStackGen {
         
         
         
-//        PriorityStack<String> stack = new PriorityStack();
-//               
+        PriorityStack<String> stack = new PriorityStack();
+               
+        
+        stack.push("Steph");
+        stack.push("Bob");
+         stack.push("Alex", true);
+        stack.push("Costa");
+        stack.push("Lena");
 //        
-//        stack.push("Steph");
-//        stack.push("Bob");
-//         stack.push("Alex", true);
-//        stack.push("Costa");
-//        stack.push("Lena");
-////        
-////                stack.push("Steve", true);
-////        stack.push("Bill");
-////         stack.push("Mark", true);
-////        stack.push("Aneka");
-////        stack.push("Luna", true);
+//                stack.push("Steve", true);
+//        stack.push("Bill");
+//         stack.push("Mark", true);
+//        stack.push("Aneka");
+//        stack.push("Luna", true);
 ////      
 ////
 ////        
-//        String theString = stack.toString();
-//        System.out.println(theString);
+        String theString = stack.toString();
+        System.out.println(theString);
 //////        System.out.println(stack.pop());
 ////     //   System.out.println(stack.toString());
 ////       // System.out.println(stack.popPriority());
@@ -49,9 +49,9 @@ public class MidtermDSPriStackGen {
 ////
 //       System.out.println("Below is array");
 //
-//        for (String theStr : theArray){
-//            System.out.print(theStr + ", ");
-//        }
+        for (Object theStr : stack){
+            System.out.print(theStr + ", ");
+        }
 //       
 //        for (Object names : stack) {
 //            System.out.println(names);

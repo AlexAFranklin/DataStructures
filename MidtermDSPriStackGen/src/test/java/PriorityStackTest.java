@@ -324,15 +324,15 @@ public class PriorityStackTest {
         instance.push("Xander");
         String [] template = new String[instance.getSize()];
         String [] result = instance.toArrayReversed(template);
-        int iteration = result.length;
+        int iteration = 0;
         for (Object name : instance){
-            assertEquals(name, result[--iteration]);
+            assertEquals(name, result[iteration++]);
         }
         StringBuilder charString = new StringBuilder();
         for (Object name : instance){
             charString.append(name).append(("-"));
         }
-        String expOutput = "Xander-Spike-Angel-Willow-Buffy-";
+        String expOutput = "Buffy-Willow-Angel-Spike-Xander-";
         assertEquals(expOutput, charString.toString());
     }
 
