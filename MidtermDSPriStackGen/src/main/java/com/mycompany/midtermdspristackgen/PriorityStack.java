@@ -23,6 +23,8 @@ public class PriorityStack<T> {
         
        private Container top;
        private int size;
+       private T[] reversed;
+       private int reversedCount;
        
        
 
@@ -130,7 +132,7 @@ public class PriorityStack<T> {
          
          }
  
-        //TODO create toString method for object. 
+        //TODO create toString method for cutom object. 
         @Override public String toString(){
             Container current = top;
             StringBuilder addString = new StringBuilder();
@@ -150,5 +152,32 @@ public class PriorityStack<T> {
         public int getSize(){
             return size;
         }
+        
+        
+        // TODO change return type 
+       public T[] toArray(T[] template) {
+           reversedCount = 0;
+           if (top == null){
+               return null;
+           }
+
+            return computeArray(reversedCount, template);
+    } 
+       
+ 
+       private T[] computeArray(int count, T[] template){
+            if (count == template.length) {
+               return template;
+           }
+           Container current = top;
+           for (int i = 0; i < template.length - count -1; i++) {
+               current = current.nextBelow;
+           }
+           template[count++] = current.value;
+           reversedCount = count;
+           return computeArray(reversedCount, template);
+       }
+       
+        
 
 }

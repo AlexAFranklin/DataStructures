@@ -36,8 +36,17 @@ public class MidtermDSPriStackGen {
        // System.out.println(stack.popPriority());
        // int value = stack.hasValue("Steph");
       //  System.out.println(stack.removeValue("Tim"));
-      stack.reorderByPriority();
+     //  stack.reorderByPriority();
         System.out.println(stack.toString());
+        
+        String [] template = new String[stack.getSize()];
+        String [] theArray =  stack.toArray(template);
+
+        System.out.println("Below is array");
+
+        for (String theStr : theArray){
+            System.out.println(theStr);
+        }
        
         
         
