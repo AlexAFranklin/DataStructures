@@ -38,7 +38,7 @@ public class LinkedList<T> {
         return size;
     }
 
-    public <T> Object get(int index) {
+    public T get(int index) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Not a valid index");
         }
@@ -159,7 +159,7 @@ public class LinkedList<T> {
         Container next = start;
 
         for (int i = 0; i < size; i++) {
-            newString.append(next.value).append((next == end) ? "]" : ", ");
+            newString.append(next.value.toString()).append((next == end) ? "]" : ", ");
             next = next.next;
 
         }
@@ -176,24 +176,24 @@ public class LinkedList<T> {
 
     }
 
-    class LinkedListArray<T> {
-        private T[] genArray;
-        public final int length;
-
-        LinkedListArray(Class<T> tClass, int size) {
-            genArray = (T[]) Array.newInstance(tClass, size);
-            length = size;
-        }
-
-        public T get(int index){
-            return genArray[index];
-        }
-
-        public void set(int index, T element){
-            genArray[index] = element;
-        }
-
-    }
+//    class LinkedListArray<T> {
+//        private T[] genArray;
+//        public final int length;
+//
+//        LinkedListArray(Class<T> tClass, int size) {
+//            genArray = (T[]) Array.newInstance(tClass, size);
+//            length = size;
+//        }
+//
+//        public T get(int index){
+//            return genArray[index];
+//        }
+//
+//        public void set(int index, T element){
+//            genArray[index] = element;
+//        }
+//
+//    }
 
     public T[] toArray(T[] template) {
 

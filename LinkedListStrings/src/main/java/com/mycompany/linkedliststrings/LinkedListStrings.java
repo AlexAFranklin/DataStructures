@@ -18,11 +18,11 @@ public class LinkedListStrings {
             size++;
         }
         System.out.println(array.toString());
-        System.out.println(array.get(6));
-        String [] newArray = array.toArray();
-        for (int i = 0; i < newArray.length; i++){
-            System.out.println(newArray[i]);
-        }
+        array.deleteByIndex(array.getSize()-1);
+        System.out.println(array.toString());
+        array.add("Alex");
+         System.out.println(array.toString());
+ 
 
     }
 }

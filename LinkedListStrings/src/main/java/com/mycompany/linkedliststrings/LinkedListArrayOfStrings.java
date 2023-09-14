@@ -106,6 +106,8 @@ public class LinkedListArrayOfStrings {
             size--;
             return;
         }
+        // TODO write if size was 1. 
+        
 
         Container nextContainer = start;
         for (int i = 0; i < index; i++) {

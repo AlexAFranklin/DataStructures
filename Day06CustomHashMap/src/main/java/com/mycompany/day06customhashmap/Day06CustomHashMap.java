@@ -19,19 +19,28 @@ public class Day06CustomHashMap {
         hashmap.putValue("Zac", "Franklin");
         hashmap.putValue("Tim", "Franklin");
         hashmap.putValue("Bob", "Clarke");
-        hashmap.printDebug();
-        
-        String [] hashArray = hashmap.getAllKeys();
+        hashmap.putValue("John", "Franklin");
+
         
         System.out.println(hashmap.toString());
+   
+        String [] theMapArray = hashmap.getAllKeys();
         
+        for (String key : hashmap) {
+            System.out.println(key);
+        }
+//     
+
         CustomHashMapStringString.Pair[] thePair = hashmap.getAllKeyValPairs();
-        
+
         for (Pair pairs: thePair){
             System.out.println("Key: " + pairs.key + ", Value: " + pairs.val);
         }
-        
+
+      
       
 
     }
+    
+
 }

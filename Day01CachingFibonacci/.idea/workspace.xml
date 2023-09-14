@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a8343d-6368-4ec3-916d-449370fb3f79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../LinkedListGenerics/src/test/java/org/example/LinkedListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Day05LinkedListArray/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day05LinkedListArray/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Day06CustomHashMap/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day06CustomHashMap/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LinkedListGenerics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LinkedListGenerics/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LinkedListGenerics/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LinkedListGenerics/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LinkedListGenerics/src/main/java/org/example/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LinkedListGenerics/src/main/java/org/example/LinkedList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

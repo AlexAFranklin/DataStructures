@@ -4,11 +4,39 @@
  */
 package com.mycompany.day06customhashmap;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Iterator;
+
 /**
  *
  * @author alexandrafranklin
  */
-public class CustomHashMapStringString {
+public class CustomHashMapStringString implements Iterable<String>{
+
+    @Override
+    public Iterator<String> iterator() {
+
+
+    return new Iterator<String>() {
+    
+        String[] theKeys = (String[]) getAllKeys();
+        int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return (index < theKeys.length);
+        }
+
+        @Override
+        public String next() {
+            return theKeys[index++];
+        }
+    
+        };
+    }
+
+ 
     private class Container {
 		Container next;
 		String key;
@@ -23,7 +51,26 @@ public class CustomHashMapStringString {
     public class Pair<K,V> {
 	K key;
 	V val;
+
+        public K getKey() {
+            return key;
+        }
+
+        public void setKey(K key) {
+            this.key = key;
+        }
+
+        public V getVal() {
+            return val;
+        }
+
+        public void setVal(V val) {
+            this.val = val;
+        }
+
     }
+    
+    
     
     private Container[] hashTable = new Container[5];
     private int totalItems = 0;
@@ -44,28 +91,39 @@ public class CustomHashMapStringString {
         if (hashTable[index] == null){
             hashTable[index] = newPair;
             totalItems++;
+            resize();
             return;
         }
         
         Container current = hashTable[index];
-        boolean noKeyMatch = current.key.equals(key) ? false : true;
-        if (!noKeyMatch){
-            current.value = value;
-            return;
-        }
-        while (current.next != null && noKeyMatch) {
-            if (current.next.key.equals(key)){
-                current.next.value = value;
-                noKeyMatch = false;
+
+        while (current != null) {
+            if (current.key.equals(key)){
+                current.value = value;
+                return;
             }
             current = current.next;
         }
         
-        if (noKeyMatch) {
-            current.next = newPair;
-            totalItems++;
-        }
+        newPair.next = hashTable[index];
+        hashTable[index] = newPair;
+        totalItems++;
+        resize();
     
+    }
+    
+        private Container[] newHashTable(int prime) {
+        Container[] newHashArray = new Container[prime];
+        Pair[] pairs = getAllKeyValPairs();
+        
+        for (Pair pair : pairs) {
+            int index = computeHashValue((String)pair.key) % newHashArray.length;
+            Container newPair = new Container((String) pair.key, (String) pair.val);
+            newPair.next = newHashArray[index];
+            newHashArray[index] = newPair; 
+        }
+        
+        return newHashArray;
     }
     
     public void printDebug(){
@@ -145,6 +203,7 @@ public class CustomHashMapStringString {
                 current = current.next;
             }
         }
+        Arrays.sort(keyArray);
         return keyArray;
         }
 	// Generic version: public K[] getAllKeys(K[] template) { ... }
@@ -155,17 +214,20 @@ public class CustomHashMapStringString {
         if (totalItems == 0){
             return null;
         }
+        String [] keys = getAllKeys();
+        Arrays.sort(keys);
         StringBuilder theString = new StringBuilder();
-        int decrement = totalItems;
         theString.append("[");
-        for (int i = 0; i < hashTable.length; i++){
-            Container current = hashTable[i];
-            while (current != null) {
-                theString.append(current.key + " => " + current.value);
-                theString.append((--decrement == 0) ? "]" : ", ");
-                current = current.next;
+        for (int i = 0; i < keys.length; i++){
+            try {
+                theString.append(keys[i] + " => " + getValue(keys[i]));
+                theString.append((i + 1 == keys.length) ? "]" : ", ");
+            } catch (KeyNotFoundException knf){
+               
             }
-        } 
+  
+            }
+        
         return theString.toString();
     }
         
@@ -174,20 +236,42 @@ public class CustomHashMapStringString {
 	if (totalItems == 0){
             return null;
         }
-        int increment = 0;
-            for (int j = 0; j < hashTable.length; j++){
-                Container current = hashTable[j];
-                while (current != null && increment <= totalItems) {
-                    Pair pair = new Pair();
-                    pair.key = current.key;
-                    pair.val = current.value;
-                    result[increment++] = pair;
-                current = current.next;
-            }
-            }
+ 
+        String [] keyArray = getAllKeys();
+        for (int i = 0; i < keyArray.length; i++){
+            Pair newPair = new Pair();
+            newPair.key = keyArray[i];
+            newPair.val = getValue(keyArray[i]);
+            result[i] = newPair;
+        }
+        
      
         return result;
     }
+    
+    private boolean tooBig(){
+        return (totalItems /hashTable.length >= 6);
+    }
+    
+    private int returnNextPrime(int oldPrime){
+        for (int newPrime = oldPrime * 2; newPrime < Integer.MAX_VALUE; newPrime++){
+            for (int i = 2; i < newPrime; i++){
+                if (newPrime % i == 0){
+                    i = newPrime;
+                }
+                if (i + 1 == newPrime){
+                    return newPrime;
+                }
+            }
+            
+        }
+        return 0;
+    }
         
+    private void resize(){
+        if (tooBig()){
+            hashTable = newHashTable(returnNextPrime(hashTable.length));
+        }
+    }
     
 }
