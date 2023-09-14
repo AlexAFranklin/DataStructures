@@ -4,13 +4,41 @@
  */
 package com.mycompany.midtermdspristackgen;
 
+import java.util.Iterator;
+
 
 
 /**
  *
  * @author alexandrafranklin
  */
-public class PriorityStack<T> {
+public class PriorityStack<T> implements Iterable{
+
+    @Override
+    public Iterator<T> iterator() {
+
+// TODO - maybe figure out how to do this with array - seems hopeless. 
+    return new Iterator<T>() {
+    
+        Container current = top;
+
+        @Override
+        public boolean hasNext() {
+            return (current != null);
+        }
+
+        @Override
+        public T next() {
+            T result = current.value;
+            current = current.nextBelow;
+            return result;
+        }
+    
+        };
+        
+    }
+    
+
 
 
         private class Container {
@@ -24,7 +52,7 @@ public class PriorityStack<T> {
        private Container top;
        private int size;
        private T[] reversed;
-       private int reversedCount;
+//       private int reversedCount;
        
        
 
@@ -43,6 +71,9 @@ public class PriorityStack<T> {
        }
         
          public T pop() {
+             if (top == null){
+                 throw new NoSuchElementException("There is nothing in the stack.");
+             }
              Container popped = top;
              top = top.nextBelow;
              size--;
@@ -87,7 +118,16 @@ public class PriorityStack<T> {
          }
         
          public T removeValue(T value){
-             
+             if (top == null){
+                 throw new NoSuchElementException("That value does not exist in the stack.");
+             }
+       
+             if (top.value.equals(value) ){
+                 T result = top.value;
+                 top = top.nextBelow;
+                 size--;
+                 return result;
+             }
              Container current = top;
              Container previous = new Container();
              for (int i = 0; i < size; i++){
@@ -136,16 +176,14 @@ public class PriorityStack<T> {
         @Override public String toString(){
             Container current = top;
             StringBuilder addString = new StringBuilder();
-            if (top == null){
-                return null;
-            }
             addString.append("[");
             for (int i = 0; i < size; i++){
                 addString.append(current.value.toString()).append(":");
                 addString.append((current.hasPriority) ? "P" : "N");
-                addString.append((i + 1 == size) ? "]" : ", ");
+                addString.append((i + 1 == size) ? "" : ",");
                 current = current.nextBelow;
             }
+            addString.append("]");
             return addString.toString();
         }
         
@@ -154,9 +192,11 @@ public class PriorityStack<T> {
         }
         
         
-        // TODO change return type 
-       public T[] toArray(T[] template) {
-           reversedCount = 0;
+
+       // I tried 
+        
+      public T[] toArrayReversed(T[] template) {
+           int reversedCount = 0;
            if (top == null){
                return null;
            }
@@ -165,19 +205,17 @@ public class PriorityStack<T> {
     } 
        
  
-       private T[] computeArray(int count, T[] template){
-            if (count == template.length) {
+       private T[] computeArray(int reversedCount, T[] template){
+            if (reversedCount == size) {
                return template;
            }
            Container current = top;
-           for (int i = 0; i < template.length - count -1; i++) {
+           for (int i = 0; i < size - reversedCount -1; i++) {
                current = current.nextBelow;
            }
-           template[count++] = current.value;
-           reversedCount = count;
+           template[reversedCount++] = current.value;
            return computeArray(reversedCount, template);
        }
-       
         
 
 }
