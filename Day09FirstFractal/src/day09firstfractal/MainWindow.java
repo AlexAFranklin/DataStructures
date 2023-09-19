@@ -30,9 +30,11 @@ public class MainWindow extends JFrame {
 //            g.drawLine(10, 10, getWidth()-10, getHeight()-10);
 //            g.drawLine(10,10, 20,10);
 //            g.drawLine(30,10, 40,10);
-              //  drawFractal(g, 10, getWidth()-10, 10, 19);
+//                drawFractal(g, 10, getWidth()-10, 10, 19);
 //            drawFractalTriangleDifficult(g, 10, getHeight()-10, getWidth()-10);
-               drawSquareFractal(g, 10, getWidth()-10, 10, getHeight()-10);
+//              drawFractalTriangle(g, 10, getHeight()-10, getWidth()-10);
+//               drawSquareFractal(g, 10, getHeight()-10, 10, getHeight()-10);
+            fractalTree(g, getWidth()/2, getWidth()/2, getHeight()-10, getHeight()-100, 0);
 //            
 //         g.drawLine(10, getHeight()-10, getWidth()-10, getHeight()-10);
 //         g.drawLine(getWidth()/2, 10, 10, getHeight() - 10);
@@ -166,11 +168,11 @@ public class MainWindow extends JFrame {
              g.drawLine(startX, endY, endX, endY);
              g.drawLine(startX, startY, endX, startY);
              
-             computeFractal(g, startX, endX, startY, endY, 0);
+             computeSquareFractal(g, startX, endX, startY, endY, 0);
              
           }
          
-         private void computeFractal(Graphics g, int startX, int endX, int startY, int endY, int increment) {
+         private void computeSquareFractal(Graphics g, int startX, int endX, int startY, int endY, int increment) {
              if (increment++ == 4){
                  return;
              }
@@ -181,31 +183,53 @@ public class MainWindow extends JFrame {
              //Upper left
              g.drawLine(startX, startY + height * 5, startX + length * 5, startY + height * 5);
              g.drawLine(startX + length *  5, startY, startX + length * 5, startY + height * 5);
-             computeFractal(g, startX, startX + length * 5, startY, startY + height * 5, increment);
+             computeSquareFractal(g, startX, startX + length * 5, startY, startY + height * 5, increment);
              
              //Upper right
              g.drawLine(startX + length * 7, startY + height * 5, endX, startY + height * 5);
              g.drawLine(startX + length *  7, startY, startX + length * 7, startY + height * 5);
-             computeFractal(g, startX + length * 7, endX, startY, startY + height * 5, increment);
+             computeSquareFractal(g, startX + length * 7, endX, startY, startY + height * 5, increment);
              
              //Bottom left
              g.drawLine(startX, startY + height * 7, startX + length * 5, startY + height * 7);
              g.drawLine(startX + length *  5, endY, startX + length * 5, startY + height * 7);
-            computeFractal(g, startX, startX + length * 5, startY + height * 7, endY, increment); 
+            computeSquareFractal(g, startX, startX + length * 5, startY + height * 7, endY, increment); 
            
 //             //Bottom right
              g.drawLine(startX + length * 7 , startY + height * 7, startX + length * 7, endY);
              g.drawLine(startX + length *  7, startY + height* 7, endX, startY + height * 7);
-             computeFractal(g, startX + length * 7, endX, startY + height * 7, endY, increment); 
+             computeSquareFractal(g, startX + length * 7, endX, startY + height * 7, endY, increment); 
 
-             
-
-             
-             
-             
-             
+  
          }
          
+         private void fractalTree(Graphics g, int x1, int x2, int y1, int y2, int iteration){
+
+            
+             
+             double length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+             length = (length / 2.0); 
+             int finalLength = (int) length;
+             if (iteration++ == 10){
+                return;
+             }
+             
+             g.drawLine(x1, y1, x2, y2);
+             
+             
+             double angle = Math.toRadians(57);
+             double deltaXD = finalLength * Math.cos(angle);
+             double deltaYD = finalLength * Math.sin(angle);
+             int deltaX = (int) Math.floor(deltaXD);
+             int deltaY = (int) Math.floor(deltaYD);
+             
+
+// first
+             fractalTree(g, x2, x2 + deltaX, y2, y2 - deltaY, iteration);
+             //second 
+             fractalTree(g, x2, (x2 + deltaX) , y2, (y2 - deltaY) * 2, iteration);
+
+         }
          
          
         

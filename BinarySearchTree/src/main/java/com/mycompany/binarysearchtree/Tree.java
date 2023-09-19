@@ -4,48 +4,130 @@
  */
 package com.mycompany.binarysearchtree;
 
+import java.util.Iterator;
+
 /**
  *
  * @author alexandrafranklin
  */
-public class Tree {
+public class Tree implements Iterable<Integer> {
+
+    @Override
+    public Iterator<Integer> iterator() {
+
+
+    return new Iterator<Integer>() {
     
-    private class Container {
-        int key;
-        Container right;
-        Container left;
+        int [] values = getValuesInOrder();
+        int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return (index < values.length);
+        }
+
+        @Override
+        public Integer next() {
+            return values[index++];
+        }
+    
+        };
+
     }
     
-    Container head;
+    private class NodeOfInt {
+        int value;
+        NodeOfInt right;
+        NodeOfInt left;
+    }
+    
+    private NodeOfInt root;
+    private int nodesCount;
+        private int[] resultArray;
+    private int resultIndex;
 
     
-    public void insertValue(int newKey) {
-        if (head == null){
-            Container newInsert = new Container();
-            newInsert.key = newKey;
-            head = newInsert;
+    public void put(int value) {
+        if (root == null){
+            NodeOfInt newInsert = new NodeOfInt();
+            newInsert.value = value;
+            root = newInsert;
+            nodesCount++;
             return;
         }
        
-        computeInsert(newKey, head);
+        computeInsert(value, root);
         
     }
     
-    private Container computeInsert(int newKey, Container current){  
+    private NodeOfInt computeInsert(int value, NodeOfInt current){  
         if (current == null){
-            Container newInsert = new Container();
-            newInsert.key = newKey;        
+            NodeOfInt newInsert = new NodeOfInt();
+            newInsert.value = value;    
+            nodesCount++;
             return newInsert;
             
         }
-        if (current.key >= newKey) {
-            current.left = computeInsert(newKey, current.left);
-            System.out.println("left");
+        if (current.value > value) {
+            current.left = computeInsert(value, current.left);
+        } else if (current.value < value){
+            current.right = computeInsert(value, current.right);
         } else {
-            current.right = computeInsert(newKey, current.right);
-             System.out.println("right");
+            throw new IllegalArgumentException("This number has already been inserted.");
         }
         return current;    
     }
     
+    public int getSize(){
+        return nodesCount;
+    }
+    
+    public boolean hasValue(int value){
+        NodeOfInt current = root;
+        while (current != null){
+            if (current.value == value){
+                return true;
+            } else if (current.value > value){
+                current = current.left;
+            } else {
+                current = current.right;
+            } 
+        }
+        return false;
+        
+    }
+    
+    	public int getSumOfAllValues() {
+     
+          return  getSumOfThisAndSubNodes(root);
+	}
+        
+        private int getSumOfThisAndSubNodes(NodeOfInt node) { 
+            if (node == null){
+                return 0;
+            }
+            
+           return getSumOfThisAndSubNodes(node.left) + node.value + getSumOfThisAndSubNodes(node.right);
+
+        }
+        
+        	// uses recursion to collect all values from largest to smallest
+	public int [] getValuesInOrder() { 
+                int [] resultArray = new int[nodesCount];
+                this.resultArray = resultArray;
+                resultIndex = 0;
+                collectValuesInOrder(root);
+                return this.resultArray;
+		
+	}
+	// private helper recursive method to implement the above method
+	private void collectValuesInOrder(NodeOfInt node) {
+                if (node == null){
+                return;
+                }
+                collectValuesInOrder(node.left);
+                resultArray[resultIndex++] = node.value;
+                collectValuesInOrder(node.right);
+            
+    } 
 }

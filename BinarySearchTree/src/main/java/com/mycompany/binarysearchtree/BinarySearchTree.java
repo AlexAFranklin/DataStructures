@@ -15,25 +15,51 @@ public class BinarySearchTree {
         
         Tree bst = new Tree();
        
-        bst.insertValue(7);
-        System.out.println("-----------");
-        bst.insertValue(4);
-        System.out.println("-----------");
-        bst.insertValue(10);
-        System.out.println("-----------");
-        bst.insertValue(8);
-        System.out.println("-----------");
-        bst.insertValue(-21);
-        System.out.println("-----------");
-        bst.insertValue(3);
-        System.out.println("-----------");
-        bst.insertValue(15);
-        System.out.println("-----------");
-        bst.insertValue(5);
-        System.out.println("-----------");
-        bst.insertValue(18);
-        System.out.println("-----------");
+        bst.put(7);
+   
+        bst.put(4);
+      
+        bst.put(10);
+  
+        bst.put(8);
+   
+        bst.put(-21);
+  
+        bst.put(3);
+
+ 
+
+        bst.put(5);
+   
+        bst.put(18);
+      //  print(bst.hasValue(876));
+      // int value =  bst.getSumOfAllValues();
+      // print(value);
+//       print(bst.getValuesInOrder());
+       
+       for (int x : bst){
+           print(x);
+       }
+       
+   
         
         
+    }
+    
+    public static void print(String string){
+        System.out.println(string);
+    }
+    
+        public static void print(Boolean bool){
+        System.out.println(bool);
+    }
+        
+            public static void print(int x){
+        System.out.println(x);
+    }
+                        public static void print(int[] x){
+        for (int num : x){
+            System.out.println(num);
+        }
     }
 }
