@@ -3,23 +3,38 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-
 import com.mycompany.binarytreekeyvalue.TreeKeyValue;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  *
  * @author alexandrafranklin
  */
 public class KeyValueStringIntTest {
-    
+
     public KeyValueStringIntTest() {
-        
+
+    }
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.setOut(standardOut);
     }
 
     @Test
-    public void testPutAndSize(){
+    public void testPutAndSize() {
         TreeKeyValue bts = new TreeKeyValue();
         assertEquals(0, bts.getSize());
         bts.put("Alex", 30);
@@ -35,7 +50,7 @@ public class KeyValueStringIntTest {
     }
 
     @Test
-    public void testKeyGet(){
+    public void testKeyGet() {
         TreeKeyValue bts = new TreeKeyValue();
         bts.put("Alex", 30);
         bts.put("Tim", 61);
@@ -53,6 +68,25 @@ public class KeyValueStringIntTest {
         assertEquals(31, bts.getValByKey("Stephanie"));
         assertEquals(61, bts.getValByKey("Sharon"));
         assertEquals(62, bts.getValByKey("Tim"));
-        
+
     }
+
+    @Test
+    public void printOut() {
+
+    TreeKeyValue bts = new TreeKeyValue();
+
+    bts.put ("Alex", 30);
+    bts.put ("Tim", 61);
+    bts.put ("Sharon", 60);
+    bts.put ("Stephanie", 30);
+        
+    bts.printValuesInOrder ();
+
+    assertEquals("""
+                 Key => Alex, Value => 30
+                 Key => Sharon, Value => 60
+                 Key => Stephanie, Value => 30
+                 Key => Tim, Value => 61""", outputStreamCaptor.toString().trim());
+}
 }

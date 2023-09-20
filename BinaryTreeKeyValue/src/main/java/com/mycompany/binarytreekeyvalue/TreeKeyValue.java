@@ -9,7 +9,9 @@ package com.mycompany.binarytreekeyvalue;
  * @author alexandrafranklin
  */
 public class TreeKeyValue {
-        private class Node {
+
+    private class Node {
+
         String key;
         int value;
         Node right;
@@ -20,74 +22,80 @@ public class TreeKeyValue {
             this.value = value;
         }
     }
-        
+
     Node root;
     private int nodesCount;
-    
-        public void put(String key, int value) {
-        if (root == null){
+
+    public void put(String key, int value) {
+        if (root == null) {
             Node newInsert = new Node(key, value);
             root = newInsert;
             nodesCount++;
             return;
         }
-       
-        computeInsert(key, value, root);
-        
-    }
-        
-        private Node computeInsert(String key, int value, Node current){  
-        if (current == null){
-            Node newInsert = new Node(key, value); 
-            nodesCount++;
-            return newInsert;
-            
+        Node current = root;
+        while (current != null) {
+            if (current.key.compareTo(key) == 0) {
+                current.value = value;
+                return;
+            }
+
+            if (current.key.compareTo(key) > 0) {
+                if (current.left == null) {
+                    Node newInsert = new Node(key, value);
+                    current.left = newInsert;
+                    nodesCount++;
+                    return;
+                } else {
+                    current = current.left;
+                }
+
+            } else {
+                if (current.right == null) {
+                    Node newInsert = new Node(key, value);
+                    current.right = newInsert;
+                    nodesCount++;
+                    return;
+                } else {
+                    current = current.right;
+                }
+            }
         }
-        if (current.key.compareTo(key) > 0) {
-            current.left = computeInsert(key, value, current.left);
-        } else if (current.key.compareTo(key) < 0){
-            current.right = computeInsert(key, value, current.right);
-        } else {
-            current.value = value;
-        }
-        return current;    
+
     }
-    
-    public int getSize(){
+
+    public int getSize() {
         return nodesCount;
     }
-    
-    public int getValByKey(String key) throws RuntimeException { 
-    Node current = root;
-    while (current != null){
-        if (current.key.equals(key)){
-            return current.value;
-        } else if (current.key.compareTo(key) > 0) {
-            current = current.left;
-        } else {
-            current = current.right;
+
+    public int getValByKey(String key) throws RuntimeException {
+        Node current = root;
+        while (current != null) {
+            if (current.key.equals(key)) {
+                return current.value;
+            } else if (current.key.compareTo(key) > 0) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+
         }
-        
+        throw new RuntimeException("That key does not exist");
     }
-    throw new RuntimeException("That key does not exist");
+
+    public void printValuesInOrder() {
+        collectValuesInOrder(root);
     }
-    
-    
-    	public void printValuesInOrder() { 
-                collectValuesInOrder(root);		
-	}
-        
-        
-        
-	// private helper recursive method to implement the above method
-	private void collectValuesInOrder(Node node) {
-                if (node == null){
-                return;
-                }
-                collectValuesInOrder(node.left);
-                System.out.println("Key => " + node.key + ", Value => " + node.value);
-                collectValuesInOrder(node.right);
-            
-    } 
+
+    // private helper recursive method to implement the above method
+    private void collectValuesInOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        collectValuesInOrder(node.left);
+        System.out.println("Key => " + node.key + ", Value => " + node.value);
+        collectValuesInOrder(node.right);
+
+    }
 
 }

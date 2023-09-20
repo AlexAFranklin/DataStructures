@@ -12,26 +12,32 @@ public class BinaryTreeKeyValue {
 
     public static void main(String[] args) {
        TreeKeyValue bts = new TreeKeyValue();
-       GenericBinaryTree<Integer, String> genTree = new GenericBinaryTree<Integer, String>();
+       GenericBinaryTree<Integer, String> genTree = new GenericBinaryTree<>();
        
-       genTree.put(1993, "Alex");
-       genTree.put(1990, "Zac");
-       genTree.put(18, "Alex");
-       genTree.put(-10, "Zac");
-       genTree.put(32, "Alex");
-       genTree.put(1990, "Tim");
-       
-       print(genTree.getValByKey(1990));
-       genTree.printValuesInOrder();
+         bts.put("Alex", 30);
+        bts.put("Tim", 61);
+        bts.put("Sharon", 60);
+        bts.put("Stephanie", 30);
+//       print(bts.getValByKey("sharon"));
        
        
-       bts.put("Alex", 30);
-       bts.put("Sharon", 60);
-       bts.put("Tim", 61);
-//       print(bts.getSize());
-//       print(bts.getValByKey("Tim"));
-//        print(bts.getValByKey("Sharon"));
-//        bts.printValuesInOrder();
+              genTree.put(2764, "Alex");
+        genTree.put(2357, "Tim");
+        genTree.put(9374, "Steph");
+       
+       
+//       genTree.printValuesInOrder();
+       
+//bts.printValuesInOrder();
+       
+
+       for (Pair key : genTree){
+           print("Key => " + key.key + ", Value => " + key.value);
+       }
+       
+       
+       
+
     }
     
         public static void print(String string){
