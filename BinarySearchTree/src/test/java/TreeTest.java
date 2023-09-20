@@ -57,6 +57,12 @@ public class TreeTest {
         }
         assertEquals(5, bst.getSize());
         assertTrue(caught);
+        assertThrows(RuntimeException.class, () ->{
+            bst.put(1000);
+        });
+        assertThrows(RuntimeException.class, () ->{
+            bst.put(2);
+        });
 
     }
     

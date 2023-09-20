@@ -68,6 +68,12 @@ public class KeyValueStringIntTest {
         assertEquals(31, bts.getValByKey("Stephanie"));
         assertEquals(61, bts.getValByKey("Sharon"));
         assertEquals(62, bts.getValByKey("Tim"));
+        assertThrows(RuntimeException.class, () ->{
+            bts.getValByKey("Alexandra");
+        });
+        assertThrows(RuntimeException.class, () ->{
+            bts.getValByKey("Time");
+        });
 
     }
 

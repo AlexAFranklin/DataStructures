@@ -54,6 +54,9 @@ public class GenericKeyValueTest {
         genTree.put(2947, "Zac");
         genTree.put(1234, "Noemie");
         genTree.put(3487, "Chris");
+        assertThrows(RuntimeException.class, () ->{
+            genTree.getValByKey(12345);
+        });
         assertEquals("Alex", genTree.getValByKey(2764));
         assertEquals("Tim", genTree.getValByKey(2357));
         assertEquals("Steph", genTree.getValByKey(9374));
@@ -66,6 +69,9 @@ public class GenericKeyValueTest {
         assertEquals("Justine", genTree.getValByKey(2947));
         assertEquals("Emma", genTree.getValByKey(1234));
         assertEquals("Leah", genTree.getValByKey(3487));
+        assertThrows(RuntimeException.class, () ->{
+            genTree.getValByKey(9000);
+        });
     }
 
     @Test
@@ -77,6 +83,9 @@ public class GenericKeyValueTest {
         genTree.put("SBFK", "Zac");
         genTree.put("SOBF", "Noemie");
         genTree.put("SIFH", "Chris");
+        assertThrows(RuntimeException.class, () ->{
+            genTree.getValByKey("SJEO");
+        });
         assertEquals("Alex", genTree.getValByKey("DHKB"));
         assertEquals("Tim", genTree.getValByKey("JSBI"));
         assertEquals("Steph", genTree.getValByKey("SJEI"));
@@ -89,6 +98,9 @@ public class GenericKeyValueTest {
         assertEquals("Emma", genTree.getValByKey("SIFH"));
         assertEquals("Leah", genTree.getValByKey("JSBI"));
         assertEquals("Justine", genTree.getValByKey("SOBF"));
+        assertThrows(RuntimeException.class, () ->{
+            genTree.getValByKey("BBBB");
+        });
 
     }
 
