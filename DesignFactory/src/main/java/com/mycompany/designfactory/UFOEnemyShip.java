@@ -2,25 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.binarytreekeyvalue;
+package com.mycompany.designfactory;
 
 /**
  *
  * @author alexandrafranklin
  */
-public class Pair<K, V> {
+public class UFOEnemyShip extends EnemyShip{
     
-    public K key;
-    public V value;
-
-    public Pair() {
+    public UFOEnemyShip(){
+        setName("UFO Enemy Ship");
+        setAmtDamage(20.0);
     }
-
-    public Pair(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
-
-
     
 }

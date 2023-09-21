@@ -44,18 +44,19 @@ public class MidtermDSPriStackGen {
 ////     //  stack.reorderByPriority();
 //////        System.out.println(stack.toString());
 ////       
-//         String [] template = new String[stack.getSize()];
-//      String [] theArray =  stack.toArrayReversed(template);
+         String [] template = new String[stack.getSize()];
+      String [] theArray =  stack.toArrayReversed(template);
 ////
 //       System.out.println("Below is array");
 //
-        for (Object theStr : stack){
-            System.out.print(theStr + ", ");
-        }
-//       
-//        for (Object names : stack) {
-//            System.out.println(names);
+//        for (String theStr : theArray){
+//            System.out.print(theStr + ", ");
 //        }
+//       
+        for (Object names : stack) {
+            String str = (String) names;
+            System.out.println(str);
+        }
         
 
 

@@ -45,9 +45,9 @@ public class GenericBinaryTree<K extends Comparable<K>, V> implements Iterable<P
             this.value = value;
         }
 
-        public K getKey() {
-            return key;
-        }
+//        public K getKey() {
+//            return key;
+//        }
 
     }
 
@@ -100,7 +100,7 @@ public class GenericBinaryTree<K extends Comparable<K>, V> implements Iterable<P
         return nodesCount;
     }
 
-    public V getValByKey(K key) throws RuntimeException {
+    public V getValByKey(K key) { //throws RuntimeException {
         Node current = root;
         while (current != null) {
             if (current.key.compareTo(key) == 0) {
@@ -158,8 +158,7 @@ public class GenericBinaryTree<K extends Comparable<K>, V> implements Iterable<P
             return;
         }
         computePairOrder(node.left);
-        Pair<K, V> pair = new Pair(node.key, node.value);
-        pairArray[pairIndex++] = pair;
+        pairArray[pairIndex++] = new Pair(node.key, node.value);
         computePairOrder(node.right);
 
     }

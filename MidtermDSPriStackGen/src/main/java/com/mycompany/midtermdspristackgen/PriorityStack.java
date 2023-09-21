@@ -30,12 +30,12 @@ public class PriorityStack<T> implements Iterable{
 
         @Override
         public boolean hasNext() {
-            return (index < iterationArray.length);
+            return (index < tArray.length);
         }
 
         @Override
         public T next() {
-            return iterationArray[index++];
+            return tArray[index++];
         }
     
         };
@@ -57,7 +57,7 @@ public class PriorityStack<T> implements Iterable{
         
        private Container top;
        private int size;
-       private T[] arrayTemplate;
+       private T[] tArray;
 //       private int reversedCount;
        
        
@@ -207,7 +207,8 @@ public class PriorityStack<T> implements Iterable{
                return null;
            }
 
-            return computeArray(reversedCount, template);
+            tArray = computeArray(reversedCount, template);
+            return tArray;
     } 
        
  
