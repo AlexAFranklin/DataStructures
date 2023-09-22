@@ -10,7 +10,7 @@ import java.util.Iterator;
  *
  * @author alexandrafranklin
  */
-public class Tree implements Iterable<Integer>, Visitable {
+public class Tree implements Iterable<Integer>{
 
     @Override
     public Iterator<Integer> iterator() {
@@ -34,11 +34,6 @@ public class Tree implements Iterable<Integer>, Visitable {
 
     }
 
-    @Override
-    public double[] accept(Visitor visitor) {
-
-        return visitor.visit(this);
-    }
 
     private class NodeOfInt {
 

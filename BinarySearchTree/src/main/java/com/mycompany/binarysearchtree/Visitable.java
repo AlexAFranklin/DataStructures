@@ -9,5 +9,5 @@ package com.mycompany.binarysearchtree;
  * @author alexandrafranklin
  */
 public interface Visitable {
-    public double [] accept(Visitor visitor);
+    public double [] accept(VisitorInt visitor);
 }

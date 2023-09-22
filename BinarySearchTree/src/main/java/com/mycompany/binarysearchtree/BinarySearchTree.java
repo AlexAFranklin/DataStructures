@@ -36,14 +36,7 @@ public class BinarySearchTree {
 //           print(x);
 //       }
 //       
-        print(bst.getValuesInOrder());
-        TwentyPercentVisitor twentyPercent = new TwentyPercentVisitor();
-        InvertVisitor invertedNums = new InvertVisitor();
-        SquaredVisitor squared = new SquaredVisitor();
-        print(bst.accept(invertedNums));
-        print(bst.accept(twentyPercent));
-        print(bst.accept(squared));
-     
+
         
     }
     
