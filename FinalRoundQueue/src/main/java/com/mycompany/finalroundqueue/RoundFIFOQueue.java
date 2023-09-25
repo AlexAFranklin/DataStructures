@@ -2,7 +2,7 @@ package com.mycompany.finalroundqueue;
 
 import java.util.Iterator;
 
-class RoundFIFOQueue<T extends Comparable> implements Iterable<T> {
+public class RoundFIFOQueue<T extends Comparable> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
@@ -57,7 +57,6 @@ class RoundFIFOQueue<T extends Comparable> implements Iterable<T> {
         }
 
         current.next = enqueue;
-        current.next = dequeue;
 
     }
 
@@ -71,13 +70,6 @@ class RoundFIFOQueue<T extends Comparable> implements Iterable<T> {
             }
             current = current.next;
         }
-        // for debugging only but required as a part of your solution
-        // print out each Node's content on a separate line
-        // starting with eneuque reference, following next reference maxSize (or probably maxSize-1) times.
-        // after the loop is done you should be back at eneuque - check that and if you're not
-        // throw new RuntimeException("Internal error: queue may not be circular");
-        // example line of output for node with debugId=2, value="Joe" (String type):
-        // Node #0: Joe
 
     }
 
