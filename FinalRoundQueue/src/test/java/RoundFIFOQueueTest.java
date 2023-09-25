@@ -17,7 +17,8 @@ import com.mycompany.finalroundqueue.RoundFIFOQueue;
  */
 public class RoundFIFOQueueTest {
 
-    public class Pet implements Comparable {
+    private class Pet implements Comparable {
+        // didn't make this class iterable
 
         @Override
         public int compareTo(Object o) {
@@ -49,26 +50,6 @@ public class RoundFIFOQueueTest {
     public RoundFIFOQueueTest() {
     }
 
-    @BeforeAll
-    public static void setUpClass() {
-
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-    }
-
-    @BeforeEach
-    public void setUp() {
-        RoundFIFOQueue<Integer> intFifo = new RoundFIFOQueue(4, new Integer[0]);
-        RoundFIFOQueue<String> strFifo = new RoundFIFOQueue(4, new String[0]);
-        RoundFIFOQueue<Pet> petFifo = new RoundFIFOQueue(4, new Pet[0]);
-
-    }
-
-    @AfterEach
-    public void tearDown() {
-    }
 
     @Test
     public void addingInts() {
@@ -207,17 +188,103 @@ public class RoundFIFOQueueTest {
             assertEquals(expected2[iterator++], num);
         }
     }
-    
+
     @Test
-    public void arrayOfStrings(){
+    public void arrayOfStrings() {
         RoundFIFOQueue<String> strFifo = new RoundFIFOQueue(3, new String[0]);
         strFifo.enqueue("Buffy", true);
         strFifo.enqueue("Xander", true);
         strFifo.enqueue("Giles", true);
-        assertEquals("Buffy", strFifo.dequeue());
         strFifo.enqueue("Willow", true);
         strFifo.enqueue("Tara", true);
         strFifo.enqueue("Anya", true);
+
+        String[] expected1 = {
+            "Anya", "Tara", "Willow", "Giles", "Xander", "Buffy"
+        };
+        String[] lifoArray1 = strFifo.toArray();
+
+        int iterator = 0;
+        for (String name : lifoArray1) {
+            assertEquals(expected1[iterator++], name);
+        }
+        iterator = 0;
+        for (String name : strFifo) {
+            assertEquals(expected1[iterator++], name);
+        }
+        strFifo.dequeue();
+        strFifo.dequeue();
+        strFifo.dequeue();
+
+        String[] expected2 = {
+            "Anya", "Tara", "Willow"
+        };
+        String[] lifoArray2 = strFifo.toArray();
+
+        iterator = 0;
+        for (String name : lifoArray2) {
+            assertEquals(expected2[iterator++], name);
+        }
+        iterator = 0;
+        for (String name : strFifo) {
+            assertEquals(expected2[iterator++], name);
+        }
+    }
+
+    @Test
+    public void countInts() {
+        RoundFIFOQueue<Integer> intFifo = new RoundFIFOQueue(4, new Integer[0]);
+        intFifo.enqueue(1993, true);
+        intFifo.enqueue(1963, true);
+        intFifo.enqueue(342, true);
+        intFifo.enqueue(1993, true);
+
+        intFifo.enqueue(1963, true);
+        intFifo.enqueue(186, true);
+        intFifo.enqueue(1993, true);
+        intFifo.enqueue(10, true);
+        assertEquals(3, intFifo.countValues(1993));
+        assertEquals(2, intFifo.countValues(1963));
+        assertEquals(1, intFifo.countValues(10));
+        assertEquals(0, intFifo.countValues(1961));
+        intFifo.dequeue();
+        intFifo.dequeue();
+        intFifo.dequeue();
+        intFifo.dequeue();
+        assertEquals(1, intFifo.countValues(1993));
+        assertEquals(1, intFifo.countValues(1963));
+        assertEquals(1, intFifo.countValues(10));
+        assertEquals(0, intFifo.countValues(342));
+
+    }
+
+    @Test
+    public void countPets() {
+        RoundFIFOQueue<Pet> petFifo = new RoundFIFOQueue(4, new Pet[0]);
+        petFifo.enqueue(new Pet("Bob", "Cat"), true);
+        petFifo.enqueue(new Pet("Max", "Dog"), true);
+        petFifo.enqueue(new Pet("Eeyore", "Rat"), true);
+
+        petFifo.enqueue(new Pet("Zoe", "Cat"), true);
+        petFifo.enqueue(new Pet("Eeyore", "Donkey"), true);
+        petFifo.enqueue(new Pet("Bob", "Cat"), true);
+        assertEquals(2, petFifo.countValues(new Pet("Bob", "Cat")));
+        assertEquals(1, petFifo.countValues(new Pet("Zoe", "Cat")));
+        assertEquals(1, petFifo.countValues(new Pet("Eeyore", "Rat")));
+        assertEquals(1, petFifo.countValues(new Pet("Eeyore", "Donkey")));
+        assertEquals(0, petFifo.countValues(new Pet("Luna", "Cat")));
+        assertEquals(0, petFifo.countValues(new Pet("Bob", "Dog")));
+        petFifo.dequeue();
+        petFifo.dequeue();
+        petFifo.dequeue();
+        assertEquals(1, petFifo.countValues(new Pet("Bob", "Cat")));
+        assertEquals(1, petFifo.countValues(new Pet("Zoe", "Cat")));
+        assertEquals(0, petFifo.countValues(new Pet("Eeyore", "Rat")));
+        assertEquals(1, petFifo.countValues(new Pet("Eeyore", "Donkey")));
+        petFifo.enqueue(new Pet("Eeyore", "Donkey"), true);
+        assertEquals(2, petFifo.countValues(new Pet("Eeyore", "Donkey")));
+        petFifo.enqueue(new Pet("Zoe", "Cat"), true);
+        assertEquals(2, petFifo.countValues(new Pet("Zoe", "Cat")));
     }
 
 }

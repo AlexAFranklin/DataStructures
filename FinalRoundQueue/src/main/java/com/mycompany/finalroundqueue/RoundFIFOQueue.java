@@ -122,7 +122,7 @@ public class RoundFIFOQueue<T extends Comparable> implements Iterable<T> {
     
     public int countValues(T value) { 
         int found = 0;
-        Node current = enqueue.next;
+        Node current = dequeue;
         for (int i = 0; i < size; i++){
             if (current.value.compareTo(value) == 0) found++;
             current = current.next;
