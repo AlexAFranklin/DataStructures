@@ -34,7 +34,7 @@ public class MainWindow extends JFrame {
 //            drawFractalTriangleDifficult(g, 10, getHeight()-10, getWidth()-10);
 //              drawFractalTriangle(g, 10, getHeight()-10, getWidth()-10);
 //               drawSquareFractal(g, 10, getHeight()-10, 10, getHeight()-10);
-            fractalTree(g, getWidth()/2, getWidth()/2, getHeight()-10, getHeight()-100, 0);
+            fractalTree(g, getWidth()/2, getWidth()/2, getHeight()-10, getHeight()-100, 0, 60);
 //            
 //         g.drawLine(10, getHeight()-10, getWidth()-10, getHeight()-10);
 //         g.drawLine(getWidth()/2, 10, 10, getHeight() - 10);
@@ -203,12 +203,13 @@ public class MainWindow extends JFrame {
   
          }
          
-         private void fractalTree(Graphics g, int x1, int x2, int y1, int y2, int iteration){
+         private void fractalTree(Graphics g, int x1, int x2, int y1, int y2, int iteration, int degrees){
 
             
              
              double length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-             length = (length / 2.0); 
+             length = (length  / 3.0); 
+             length *= 2;
              int finalLength = (int) length;
              if (iteration++ == 10){
                 return;
@@ -216,18 +217,25 @@ public class MainWindow extends JFrame {
              
              g.drawLine(x1, y1, x2, y2);
              
+
              
-             double angle = Math.toRadians(57);
-             double deltaXD = finalLength * Math.cos(angle);
-             double deltaYD = finalLength * Math.sin(angle);
-             int deltaX = (int) Math.floor(deltaXD);
-             int deltaY = (int) Math.floor(deltaYD);
+             double angle = Math.toRadians(degrees);
+             double deltaX1D = finalLength * Math.cos(angle);
+             double deltaY1D = finalLength * Math.sin(angle);
+             int deltaX1 = (int) Math.floor(deltaX1D);
+             int deltaY1 = (int) Math.floor(deltaY1D);
+             
+             double angle2 = Math.toRadians(degrees * 2);
+             double deltaX2D = finalLength * Math.cos(angle2);
+             double deltaY2D = finalLength * Math.sin(angle2);
+             int deltaX2 = (int) Math.floor(deltaX2D);
+             int deltaY2 = (int) Math.floor(deltaY2D);
              
 
 // first
-             fractalTree(g, x2, x2 + deltaX, y2, y2 - deltaY, iteration);
+             fractalTree(g, x2, x2 + deltaX1, y2, y2 - deltaY1, iteration, degrees - 10);
              //second 
-             fractalTree(g, x2, (x2 + deltaX) , y2, (y2 - deltaY) * 2, iteration);
+             fractalTree(g, x2, (x2 + deltaX2) , y2, (y2 - deltaY2), iteration, degrees + 10 );
 
          }
          
